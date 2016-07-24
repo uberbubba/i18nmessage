@@ -1,0 +1,45 @@
+#!/bin/env bash
+#
+# post-checkout
+#
+# This script copies the .idea and project iml files from the
+# persistent .idea-files directory to the active locations in the
+# project.
+#
+# This can be executed when cloning any repo, not just IntelliJ projects
+# so it has to play well with those also.
+#
+# This script is executed after checkout and clone.
+# It is executed with the current directory set to the top level of the project.
+
+# This log file shows what was copied.
+log=.post-checkout.log
+
+# Copy the IntelliJ .idea and .iml files into the project
+copy_idea()
+{
+    local src=".idea-files/idea-shadow" dst=".idea"
+
+    # Check for an instrumented intellij project
+    if [ -d $src ]; then
+        # This is an instrumented project.  Get to work.
+        # Copy the directory and everything in it.
+        echo "Copying $src -> $dst"
+        mkdir -p $dst
+        tar cf - -C $src . | tar xvf - -C $dst
+    fi
+
+    # Check for project templates
+    src=".idea-files/project-shadow"
+    if [ -d $src ]; then
+        # This has iml templates. Copy them in, transforming them.
+        dst=.
+        echo "Copying $src -> $dst"
+        mkdir -p $dst
+        tar cf - --transform='s~iml.template~iml~' -C $src . | tar xvf - -C $dst
+    fi
+}
+
+copy_idea > $log
+
+# end

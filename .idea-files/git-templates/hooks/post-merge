@@ -1,0 +1,17 @@
+#!/bin/env bash
+#
+# post-merge
+#
+# This script calls the post-checkout script to copy the .idea and project
+# iml files from the persistent .idea-files directory to the active locations
+# in the project.
+#
+# This can be executed when pulling any repo, not just IntelliJ projects
+# so it has to play well with those also.
+#
+# This script is executed after merge, and by extension, pull.
+# It is executed with the current directory set to the top level of the project.
+
+${GIT_DIR}/hooks/post-checkout
+
+# end
