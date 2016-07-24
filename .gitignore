@@ -18,6 +18,8 @@ buildNumber.properties
 #
 # Project files to be ignored
 .idea/
+workspace.xml
+.idea-files/**/libraries/
 **.iml
 **.log
 # ================================================================
