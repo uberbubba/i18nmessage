@@ -19,6 +19,7 @@ buildNumber.properties
 # Project files to be ignored
 .idea/
 **.iml
+**.log
 # ================================================================
 # end
 
