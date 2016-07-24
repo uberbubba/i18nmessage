@@ -1,6 +1,6 @@
-package com.netscout.pfsone.i18n;
+package org.uberbubba.ideapoc.i18n;
 
-import com.netscout.pfsone.resource.XMLResourceBundleControl;
+import org.uberbubba.ideapoc.resource.XMLResourceBundleControl;
 import org.apache.log4j.Logger;
 
 import java.text.MessageFormat;

@@ -1,8 +1,7 @@
-package com.netscout.pfsone.resource
+package org.uberbubba.ideapoc.resource
 
-import com.netscout.pfsone.i18n.I18nMessage
-import com.netscout.pfsone.i18n.I18nMessageType
-import com.netscout.pfsone.i18n.I18nSystemException
+import org.uberbubba.ideapoc.i18n.I18nMessage
+import org.uberbubba.ideapoc.i18n.I18nMessageType
 import spock.lang.*
 
 /**

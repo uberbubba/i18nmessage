@@ -1,4 +1,4 @@
-package com.netscout.pfsone.resource;
+package org.uberbubba.ideapoc.resource;
 
 import java.io.IOException;
 import java.io.InputStream;

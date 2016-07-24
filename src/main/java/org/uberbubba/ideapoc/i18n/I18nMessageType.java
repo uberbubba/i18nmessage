@@ -1,4 +1,4 @@
-package com.netscout.pfsone.i18n;
+package org.uberbubba.ideapoc.i18n;
 
 /**
  * This class enumerates all internationalized (i18n) messages used by PFS One.
