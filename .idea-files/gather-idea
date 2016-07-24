@@ -1,0 +1,32 @@
+#!/bin/env bash
+#
+# gather-idea
+#
+# This script copies the active .idea and project iml files from the
+# project back into the persistent .idea-files directory.
+#
+# This is intended to be manually run after maintenance on the project.
+# Users will acquire the changes by pulling the persistent files.
+#
+
+# Copy the IntelliJ .idea and .iml files from the project
+copy_idea()
+{
+    local dst=".idea-files/idea-shadow" src=".idea"
+
+    # Copy the directory and everything in it.
+    echo "Copying $src -> $dst"
+    mkdir -p $dst
+    tar cf - -C $src . | tar xvf - -C $dst
+
+    # Check for project templates
+    dst=".idea-files/project-shadow"
+    src=.
+	echo "Copying $src -> $dst"
+	mkdir -p $dst
+	tar cf - --transform='s~iml$~iml.template~iml~' $(find ${src} -name '*.iml') | tar xvf - -C $dst
+}
+
+copy_idea > $log
+
+# end
